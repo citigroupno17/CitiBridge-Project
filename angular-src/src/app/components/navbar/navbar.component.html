@@ -1,0 +1,42 @@
+<div id="headline">
+    <img [src]="fullImagePath" >
+    <h1>Our Recommendations, Your Profit!</h1>
+</div>
+
+<br>
+<div class="separator">
+<nav class="navbar navbar-expand-md bg-dark  ">
+  <a class="navbar-brand mainname" href="#" *ngIf="!authService.loggedIn()"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="nav navbar-nav navbar-left">
+          <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/']"> HOME &emsp;&emsp; </a></li>
+        </ul>
+  
+        
+        <ul class="nav navbar-nav navbar-right">
+        
+              
+              <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+                <a class="nav-link buttons" [routerLink]="['/dashboard']">Dashboard </a>
+              </li>
+              <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+                <a class="nav-link buttons" [routerLink]="['/profile']">Profile </a>
+              </li>
+              <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+                <a class="nav-link buttons" [routerLink]="['/login']">Login </a>
+              </li>
+              <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+                <a class="nav-link buttons" [routerLink]="['/register']">Register</a>
+              </li>
+              <li class="nav-item" *ngIf="authService.loggedIn()"><a class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
+              </li>
+        </ul>
+      </div>
+  </nav>
+</div>
+
+
